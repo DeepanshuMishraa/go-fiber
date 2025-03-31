@@ -5,9 +5,11 @@ import (
 	"log"
 	"os"
 
+	"github.com/DeepanshuMishraa/go-fiber/models"
 	"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
+	"gorm.io/gorm/logger"
 )
 
 type dbInstance struct {
@@ -39,6 +41,13 @@ func ConnectDb() {
 	log.Println("Connected to database")
 
 	//Todo: add migrations
-	
+	db.Logger = logger.Default.LogMode(logger.Info)
+	log.Println("Running migrations...")
+
+	db.AutoMigrate(&models.User{}, &models.Product{}, &models.Order{})
+
+	//Reasons for {} -> it is a pointer to the struct
+	// and we are passing the address of the struct to the AutoMigrate function
+
 	Database.DB = db
 }
