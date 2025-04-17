@@ -13,7 +13,7 @@
 
 #### Roadmap 
 
-- [ ] Scafolding the fiber and folder structures
+- [x] Scafolding the fiber and folder structures
 - [ ] Setting up db models 
 - [ ] Implementing User Auth
 - [ ] Implementing rest of the Auth
